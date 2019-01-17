@@ -25,7 +25,8 @@ const Performer = mongoose.model(
           ref: 'Prestation'
         },
         amount: {
-          type: Number
+          type: Number,
+          default: 1
         },
         isFavorite: {
           type: Boolean,

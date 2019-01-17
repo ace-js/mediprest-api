@@ -11,26 +11,23 @@ const hook = (router) => {
 }
 
 const login = async (req, res) => {
-  const {
-    error
-  } = Joi.validate(req.body, auth.credentials)
+  const { error } = Joi.validate(req.body, auth.credentials)
   error && res.status(400).send(error.details[0].message)
 
   let collaborator = await Collaborator.findOne({username: req.body.username})
-  !collaborator && res.status(400).send('Unauthorized')
+  .populate('department', 'name')
+  !collaborator && res.status(401).send('Unauthorized')
 
   const authSuccess = await password.verifyPasswordHash(req.body.password, collaborator.passwordHash, collaborator.passwordSalt)
-  collaborator = await Collaborator.findOne({
-    username: collaborator.username
-  })
-    .populate('department', 'name')
-    .select('-passwordHash -passwordSalt -performers -username')
+
   if (authSuccess && collaborator.roles.length > 0) {
     const performer = await Performer.findOne({ collaborator: collaborator._id })
     collaborator.inami = performer ? performer._id : null
-    const token = collaborator.generateAuthToken()
-    res.set('x-auth-token', token)
-    return res.status(200).send({collaborator: _.pick(collaborator, ['_id', 'roles', 'firstname', 'name', 'department', 'inami'])})
+
+    return res.status(200).set('x-auth-token', collaborator.generateAuthToken()).send({
+      collaborator: _.pick(collaborator,
+        ['_id', 'roles', 'firstname', 'name', 'department', 'inami'])
+    })
   }
   res.status(401).send('Unauthorized')
 }

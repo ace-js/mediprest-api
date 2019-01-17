@@ -4,6 +4,7 @@ const Collaborator = require('./collaborator')
 const disagreementSchema = require('./disagreement')
 const Prestation = require('./prestation')
 const Performer = require('./performer')
+const appointmentSchema = require('./appointment')
 const patientSchema = require('./patient')
 
 const Pts = mongoose.model('Pts', new mongoose.Schema({
@@ -23,7 +24,8 @@ const Pts = mongoose.model('Pts', new mongoose.Schema({
   },
   performer: {
     type: String,
-    ref: 'Performer'
+    ref: 'Performer',
+    required: true
   },
   isParticularRoom: {
     type: Boolean,
@@ -42,12 +44,8 @@ const Pts = mongoose.model('Pts', new mongoose.Schema({
     ref: 'Collaborator'
   },
   appointment: {
-    code: {
-      type: String
-    },
-    label: {
-      type: String
-    }
+    type: appointmentSchema,
+    default: null
   },
   patient: {
     type: patientSchema,

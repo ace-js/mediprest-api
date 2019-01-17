@@ -49,12 +49,11 @@ const collabSchema = new mongoose.Schema({
   }
 }).plugin(mongoosePaginate)
 
-collabSchema.methods.generateAuthToken = function () {
-  return jwt.sign({
+collabSchema.methods.generateAuthToken = () => jwt.sign({
     _id: this._id,
     roles: this.roles
   }, config.get('jwtPrivateKey'), { expiresIn: '2h' })
-}
+
 const Collaborator = mongoose.model('Collaborator', collabSchema)
 
 module.exports = Collaborator

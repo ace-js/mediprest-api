@@ -5,7 +5,8 @@ const messageSchema = require('./message')
 const disagreementSchema = new mongoose.Schema({
   comment: {
     type: String,
-    maxlength: 2000
+    maxlength: 2000,
+    required: true
   },
   traited: {
     type: Boolean,

@@ -1,5 +1,6 @@
 {
     "db": {
         "host": "mongodb://ds111319.mlab.com:11319/mediprest"
-    }
+    },
+    "jwtPrivateKey": "My Private KEY for prod azerty1234"
 }

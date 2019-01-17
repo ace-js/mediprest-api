@@ -17,7 +17,8 @@ const messageSchema = mongoose.Schema({
   },
   sender: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Collaborator'
+    ref: 'Collaborator',
+    required: true
   },
   recipient: {
     type: mongoose.Schema.Types.ObjectId,
