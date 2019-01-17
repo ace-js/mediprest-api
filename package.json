@@ -1,0 +1,58 @@
+{
+  "name": "mediprest-api",
+  "version": "1.0.0",
+  "description": "mediprest api ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard | snazzy",
+    "lint:fix": "standard --fix | snazzy"
+  },
+  "keywords": [
+    "api",
+    "tfe",
+    "nodejs",
+    "mediprest",
+    "rest"
+  ],
+  "author": "Arnaud Bertieaux",
+  "license": "ISC",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "bunyan-loggly": "^1.3.5",
+    "config": "^1.30.0",
+    "express": "^4.16.3",
+    "express-validator": "^5.2.0",
+    "g": "^2.0.1",
+    "import-local": "^1.0.0",
+    "jest": "^23.1.0",
+    "jest-cli": "^23.1.0",
+    "joi": "^13.4.0",
+    "joi-objectid": "^2.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "jspdf": "^1.4.1",
+    "lodash": "^4.17.10",
+    "mongoose": "^5.1.6",
+    "mongoose-paginate": "^5.0.3",
+    "mongoose-paginate-v2": "^1.0.12",
+    "morgan": "^1.9.0",
+    "node-forge": "^0.7.5",
+    "passport": "^0.4.0",
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "query-string": "^6.1.0",
+    "snazzy": "^7.1.1",
+    "standard": "^11.0.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0"
+  }
+}
