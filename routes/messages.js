@@ -1,4 +1,4 @@
-const { filter, isNull } = require('lodash')
+const { filter, isNull, get, orderBy } = require('lodash')
 const Joi = require('joi')
 
 const Pts = require('./../models/pts')
@@ -20,9 +20,13 @@ const GetMessages = async (req, res) => {
     await Joi.validate(req.query, messagesValidation.getMessages.query)
     const query = generateQuery(req)
 
-    const ptsWithMessage = await Pts.find(query)
+    const ptsWithMessage = await Pts.find(query) || []
+    const messages = ptsWithMessage.map(item => ({
+      id: item._id,
+      items: get(item, 'disagreement.messages',[])
+    }))
 
-    return res.status(200).send(ptsWithMessage)
+    return res.status(200).send({messages})
   } catch (error) {
     return error.isJoi
       ? res.status(400).send(error.details[0].message)
