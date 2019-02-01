@@ -23,8 +23,9 @@ const login = async (req, res) => {
   if (authSuccess && collaborator.roles.length > 0) {
     const performer = await Performer.findOne({ collaborator: collaborator._id })
     collaborator.inami = performer ? performer._id : null
-
-    return res.status(200).set('x-auth-token', collaborator.generateAuthToken()).send({
+    
+    const token = collaborator.generateAuthToken()
+    return res.status(200).set('x-auth-token', token).send({
       collaborator: _.pick(collaborator,
         ['_id', 'roles', 'firstname', 'name', 'department', 'inami'])
     })
