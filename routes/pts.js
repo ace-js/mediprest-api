@@ -86,10 +86,8 @@ const createPts = async (req, res) => {
     }
 
     await Performer.update(performer)
-    console.log('OKKKKKKK')
     return res.status(200).send(response)
   } catch (error) {
-    console.log('Error ', error)
     return error.isJoi
       ? res.status(400).send(error.details[0].message)
       : res.status(500).send(error)
@@ -98,13 +96,11 @@ const createPts = async (req, res) => {
 
 const updatePts = async (req, res) => {
   try {
-    console.log('update')
     await Joi.validate(req.params, pts.updatePts.params)
     await Joi.validate(req.body, pts.updatePts.body)
     const response = await Pts.findByIdAndUpdate(req.params.ptsId, req.body.pts)
     return res.status(200).send(response)
   } catch (error) {
-    console.log('error update ', error)
     return error.isJoi
       ? res.status(400).send(error.details[0].message)
       : res.status(500).send(error)
