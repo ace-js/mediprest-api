@@ -11,4 +11,4 @@
 
 **_This application has been done as a school final assigment for my Bachelor degree_**
 
-**_TO DO**: finish it and refactor_ 
+**_TO DO_**: _finish it and refactor_ 
