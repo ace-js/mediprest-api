@@ -34,7 +34,7 @@
     "jsonwebtoken": "^8.3.0",
     "jspdf": "^1.4.1",
     "lodash": "^4.17.10",
-    "mongoose": "^5.1.6",
+    "mongoose": "^5.7.5",
     "mongoose-paginate": "^5.0.3",
     "mongoose-paginate-v2": "^1.0.12",
     "morgan": "^1.9.0",
