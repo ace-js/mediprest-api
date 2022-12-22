@@ -31,7 +31,7 @@
     "jest-cli": "^23.1.0",
     "joi": "^13.4.0",
     "joi-objectid": "^2.0.0",
-    "jsonwebtoken": "^8.3.0",
+    "jsonwebtoken": "^9.0.0",
     "jspdf": "^1.4.1",
     "lodash": "^4.17.10",
     "mongoose": "^5.7.5",
